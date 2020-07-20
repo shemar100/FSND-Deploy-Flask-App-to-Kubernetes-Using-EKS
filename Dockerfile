@@ -5,7 +5,6 @@ WORKDIR /app
 
 RUN pip install --upgrade pip
 RUN pip install flask
+RUN pip install -r requirements.txt
 
-
-ENTRYPOINT ["python", "app.py"]
-
+ENTRYPOINT ["gunicorn", "-b", ":5000", "main:APP"]
